@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navascript>
+<operations>
+     <operation service="referee/GetReferee" method="GET" />
+	 <operation service="referee/GetRefereeList" method="GET" />
+     <operation service="referee/InsertReferee" method="POST" />
+     <operation service="referee/UpdateReferee" method="PUT" />
+     <operation service="referee/DeleteReferee" method="DELETE" />
+</operations>
+<message name= "Referee">
+     <property name= "RefereeId" type="integer" key="true,id=auto" description="Unique Id for the referee"/>
+     <property name= "RefereeName" type="string"  description="Name of the referee"/>
+     <property name= "Gender" type="string" type="selection"  cardinality="1" direction="in" description="Gender of the referee">
+	 <option name="Male" value="Male" selected="1"/>
+     <option name="Female" value="Female" selected="0"/>
+     </property>
+	 <property name= "Age" type="integer"  description="Age of the referee"/>
+	 <property name= "Nationality" type="string"  description="Referee's Nationality"/>
+	 <property name= "Game-Type" type="string"  description="Type of the Game"/>
+	 <property name= "Level-Of-Expertise" type="selection"  cardinality="1" direction="in" description="Referee's level of expertise">
+     <option name="Level 1" value="Level 1" selected="1"/>
+     <option name="Level 2" value="Level 2" selected="0"/>
+     <option name="Level 3" value="Level 3" selected="0"/>
+     </property>
+</message>
+
+</navascript>

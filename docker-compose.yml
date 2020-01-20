@@ -1,0 +1,35 @@
+version: '3'
+services:
+  postgres:
+    image: dexels/dvdrental:1
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: mysecretpassword
+  navajo:
+    build:
+      context: .
+      args:
+#        VERSION: ${VERSION}
+        VERSION: latest
+    ports:
+      - "8181:8181"
+    environment:
+     - CLUSTER=demo
+     - HAZELCAST_SIMPLE=true
+     - FILE_REPOSITORY_DEPLOYMENT=develop
+     - LOGAPPENDERS=out,stdout
+     - TENANT_MASTER=Tenant1
+     - NAVAJO_REQUEST_TIMEOUT=5000
+     - CONSOLE_USER=admin
+     - CONSOLE_PASS={sha-256}jGl25bVBBBW96Qi9Te4V37Fnqchz/Eu4qB9vKrRIqRg=
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8181/status || exit 1"]
+      interval: 1m00s
+      timeout: 10s
+      retries: 3
+
+  mongodemo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"

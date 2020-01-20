@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navascript>
+<operations>
+     <operation service="stadium/GetStadium" method="GET" />
+	 <operation service="stadium/GetStadiumList" method="GET" />
+     <operation service="stadium/InsertStadium" method="POST" />
+     <operation service="stadium/UpdateStadium" method="PUT" />
+     <operation service="stadium/DeleteStadium" method="DELETE" />
+</operations>
+<message name= "Stadium">
+     <property name= "StadiumId" type="integer" key="true,id=auto" description="Unique Id for the stadium"/>
+     <property name= "StadiumName" type="string"  description="Name of the stadium"/>
+     <property name= "Place" type="string"  description="Place where the stadium located"/>
+     <property name= "Capacity" type="integer"  description="Capacity of the stadium"/>
+</message>
+
+</navascript>

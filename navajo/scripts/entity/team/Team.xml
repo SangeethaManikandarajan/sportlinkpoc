@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navascript>
+
+	<operations>
+		<operation service="team/TeamRegistration" method="POST" />
+		<operation service="team/TeamDisplay" method="GET" />
+		<operation service="team/TeamUpdate" method="PUT" />
+		<operation service="team/TeamDelete" method="DELETE" />
+	</operations>
+
+	<message name="Team">
+		<property name="TeamId" type="integer" direction="in" key="true,auto" description="Team Id Auto Generated" />
+		<property name="TeamName" type="string" direction="in" description="Team Name" />
+		<property name="TeamPlayerCount" type="integer" direction="in" description="Team Player Count" />
+		<property name="GameType" type="selection"  cardinality="1" direction="in" description="Game Type" >
+			<option name="FootBall" value="FootBall" selected="1"/>
+			<option name="Hockey" value="Hockey" selected="0"/>
+		</property>
+	</message>
+
+</navascript>

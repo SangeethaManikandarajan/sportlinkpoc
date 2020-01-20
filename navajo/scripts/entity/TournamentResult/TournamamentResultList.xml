@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navascript>
+
+    <operations>
+        <operation service="tournament/TournamentResultList" method="GET" />
+    </operations>
+
+    <message name="TournamentResultList">
+      <message name="TournamentResult">
+		<property name="ResultId" type="integer" key="true,auto" description="Internal result identifier" />
+		<property name="TournamentId" type="integer" description="Match Reference id" />
+		<property name="TeamAScore" type="integer" description="Team A score" />
+		<property name="TeamBScore" type="integer" description="Team B score" />
+		<property name="MatchResult" type="text" description="Match Result" />		
+	</message>
+    </message>
+
+</navascript>

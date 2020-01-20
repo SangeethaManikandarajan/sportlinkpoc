@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navascript>
+
+    <param name="PlayerId" type="integer">
+        <expression value="ToInteger([/Player/PlayerId])" />
+    </param>
+
+    <map.sqlquery datasource="'dvdrental'">
+        <sqlquery.update xml:space="preserve">
+            DELETE FROM player
+            WHERE id = ?;
+        </sqlquery.update>
+        <sqlquery.addParameter value="[@PlayerId]" />
+        <sqlquery.doUpdate/>
+
+        <message name="Deleted">
+            <property name="PlayerId" type="integer" direction="out" description="Player Id auto generated">
+                <expression value="[@PlayerId]" />
+            </property>
+        </message>
+    </map.sqlquery>
+
+</navascript>

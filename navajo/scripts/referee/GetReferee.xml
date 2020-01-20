@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tsl>
+
+ <map object="com.dexels.navajo.adapter.SQLMap">
+        <field name="datasource">
+            <expression value="'dvdrental'"/>
+        </field>
+       <field name="query">
+            <expression xml:space="preserve">
+            SELECT *
+            FROM referee
+            WHERE referee_id = ?
+           </expression>
+        </field>
+         <field name="parameter">
+            <expression value="[Referee/RefereeId]"/>
+        </field>
+            <message name="Referee">
+            <map ref="resultSet">
+                         <property name= "RefereeId" type="integer" direction="out" description="Unique Id for the referee">
+			  			  <expression value="$columnValue('referee_id')" />
+			             </property>
+                         <property name= "RefereeName" type="string" direction="in" description="Name of the referee">
+	 			          <expression value="$columnValue('referee_name')" />
+			             </property>
+                         <property name= "Gender" type="string"  direction="in" description="Gender of the referee">
+	 			          <expression value="$columnValue('gender')" />
+			             </property>
+	                     <property name= "Age" type="integer" direction="in" description="Age of the referee">
+	 			          <expression value="$columnValue('age')" />
+			             </property>
+	                     <property name= "Nationality" type="string" direction="in" description="Referee's Nationality">
+	 			          <expression value="$columnValue('nationality')" />
+			             </property>
+	                     <property name= "Game-Type" type="string" direction="in" description="Type of the Game">
+	 			          <expression value="$columnValue('game_type')" />
+			             </property>
+	                    <property name= "Level-Of-Expertise" type="string"  direction="in" description="Referee's level of expertise">
+                         <expression value="$columnValue('level_of_expertise')" />
+			            </property>
+
+
+         </map>
+        </message>
+    </map>
+
+              <methods>
+	              <method name="referee/GetReferee" />
+                  <method name="referee/UpdateReferee" />
+                  <method name="referee/DeleteReferee" />
+		          <method name="referee/InsertReferee" />
+                  </methods>
+
+	
+	
+	
+	
+</tsl>

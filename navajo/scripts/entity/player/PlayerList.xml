@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navascript>
+
+    <operations>
+        <operation service="player/PlayerList" method="GET" />
+   </operations>
+
+    <message name="PlayerList">
+        <message name="Player" type="array" method="response">
+            <message name="Player" type="definition">
+                <property name="PlayerId" type="integer" key="true,auto" description="Player Id Auto Generated" />
+				<property name="TeamId" type="integer" description="Team Id is getting from Team" />
+				<property name="PlayerName" type="string" description="Player Name" />
+				<property name="Age" type="integer" description="Age" />
+				<property name="Gender" type="string" description="Gender" />
+				<property name="GameType" type="string" description="Game Type" />
+            </message>
+        </message>
+    </message>
+
+</navascript>

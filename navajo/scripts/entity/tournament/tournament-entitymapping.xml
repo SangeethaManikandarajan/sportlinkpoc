@@ -1,0 +1,12 @@
+<tml>
+  <message name="entities" type="array">
+
+    <message name="entities" type="array_element">
+      <property name="entity" value="tournament/Tournament" />
+    </message>
+  
+    <message name="entities" type="array_element">
+      <property name="entity" value="tournament/TournamentList" />
+    </message>
+  </message>
+</tml>

@@ -1,0 +1,14 @@
+<tml>
+  <message name="entities" type="array">
+
+    <message name="entities" type="array_element">
+      <property name="entity" value="referee/Referee" />
+    </message>
+  
+    <message name="entities" type="array_element">
+      <property name="entity" value="referee/RefereeList" />
+    </message>
+
+  
+  </message>
+</tml>

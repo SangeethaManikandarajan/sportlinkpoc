@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tsl>
+<validations>
+        <check code="101" description="Referee Name should not be null" xml:space="preserve">
+        	?[/Referee/RefereeName] AND Trim([/Referee/RefereeName]) != ''
+        </check>
+        <check code="102" description="Referee Age should be greater than 25 and lesser than 40" xml:space="preserve">
+            ([/Referee/Age]) &gt; 24 AND ([/Referee/Age]) &lt; 40 
+        </check>
+        <check code="103" description="Nationality should not be null" xml:space="preserve">
+        	?[/Referee/Nationality] AND Trim([/Referee/Nationality]) != ''
+        </check>
+
+       <check code="104" description="Game Type should not be null" xml:space="preserve">
+          ?[/Referee/Game-Type] AND Trim([/Referee/Game-Type]) !=''    
+        </check>
+
+</validations>
+<param name="UpdateCount">
+        <expression value="0"/>
+    </param>
+    <map object="com.dexels.navajo.adapter.SQLMap">
+        <field name="datasource">
+            <expression value="'dvdrental'"/>
+        </field>
+        <field name="update">
+            <expression xml:space="preserve">
+                UPDATE Referee
+            SET referee_name = ?,
+                gender= ?,
+                age= ?,
+				nationality= ?,
+				game_type= ?,
+				level_of_expertise= ?
+            WHERE Referee_id = ?;
+            </expression>
+        </field>
+		 <field name="parameter">
+            <expression value="[/Referee/RefereeName]"/>
+        </field>
+        <field name="parameter">
+            <expression value="[/Referee/Gender]"/>
+        </field>
+        <field name="parameter">
+            <expression value="[/Referee/Age]"/>
+        </field>
+		<field name="parameter">
+            <expression value="[/Referee/Nationality]"/>
+        </field>
+		<field name="parameter">
+            <expression value="[/Referee/Game-Type]"/>
+        </field>
+		<field name="parameter">
+            <expression value="[/Referee/Level-Of-Expertise]"/>
+        </field>
+		<field name="parameter">
+            <expression value="ToInteger([/Referee/RefereeId])"/>
+        </field>
+       <field name="doUpdate">
+            <expression value="true"/>
+        </field>
+        <param name="UpdateCount">
+            <expression value="[/@UpdateCount] + $updateCount"/>
+        </param>
+        <message name="Referee">
+             
+              <property name= "RefereeId" type="integer" direction="out" description="Unique Id for the referee">
+			  			  <expression value="[Referee/RefereeId]" />
+			             </property>
+                         <property name= "RefereeName" type="string" direction="in" description="Name of the referee">
+	 			           <expression value="[Referee/RefereeName]" />
+			             </property>
+                         <property name= "Gender" type="string"  direction="in" description="Gender of the referee">
+	 			          <expression value="[Referee/Gender]" />
+			             </property>
+	                     <property name= "Age" type="integer" direction="in" description="Age of the referee">
+	 			          <expression value="[Referee/Age]" />
+			             </property>
+	                     <property name= "Nationality" type="string" direction="in" description="Referee's Nationality">
+	 			           <expression value="[Referee/Nationality]" />
+			             </property>
+	                     <property name= "Game-Type" type="string" direction="in" description="Type of the Game">
+	 			           <expression value="[Referee/Game-Type]" />
+			             </property>
+	                    <property name= "Level-Of-Expertise" type="string"  direction="in" description="Referee's level of expertise">
+                         <expression value="[Referee/Level-Of-Expertise]" />
+			            </property>
+
+        </message>
+      </map>
+</tsl>

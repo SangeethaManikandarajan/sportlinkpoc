@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navascript>
+    <map.sqlquery datasource="'dvdrental'">
+        <sqlquery.update xml:space="preserve">
+            UPDATE tournament
+            SET tournament_name = ?,   
+             tournament_start_time=to_timestamp(?,'YYYY-MM-DD HH24:MI:SS'),
+                tournament_end_time= to_timestamp(?,'YYYY-MM-DD HH24:MI:SS'),
+                 team_a_id	 = ?,
+				team_b_id	 = ?,
+				stadium_id	 = ?,
+				referee_id=?
+            WHERE tournament_id = ?;
+        </sqlquery.update>
+        <sqlquery.addParameter value="[/Tournament/Tournamentname]" />
+        <sqlquery.addParameter value="[/Tournament/TournamentStartTime]" />
+	<sqlquery.addParameter value="[/Tournament/TournamentEndTime]" />
+        <sqlquery.addParameter value="[/Tournament/TeamAId]" />
+        <sqlquery.addParameter value="[/Tournament/TeamBId]" />
+        <sqlquery.addParameter value="[/Tournament/StadiumId]" />
+		<sqlquery.addParameter value="[/Tournament/RefereeId]" />
+<sqlquery.addParameter value="[/Tournament/TournamentId]" />
+        <sqlquery.doUpdate/>
+        <message name="Tournament">
+         <property name="TournamentId" type="integer" direction="out" description="tournamnet id">
+                <expression value="[/Tournament/TournamentId]" />
+            </property>	
+            <property name="Tournamentname" type="string" direction="in" description="Productname">
+                <expression value="[/Tournament/Tournamentname]" />
+            </property>
+            <property name="TournamentStartTime" type="string" direction="in" description="start time">
+                <expression value="[/Tournament/TournamentStartTime]" />
+            </property>
+		<property name="TournamentEndTime" type="string" direction="in" description="end tiem">
+                <expression value="[/Tournament/TournamentEndTime]" />
+            </property>
+			<property name="TeamAId" type="integer" direction="in" description="team a id">
+                <expression value="[/Tournament/TeamAId]" />
+            </property>
+			<property name="TeamBId" type="integer" direction="in" description="team b id">
+                <expression value="[/Tournament/TeamBId]" />
+            </property>
+			<property name="StadiumId" type="integer" direction="in" description="stadium id">
+                <expression value="[/Tournament/StadiumId]" />
+            </property>
+			<property name="RefereeId" type="integer" direction="in" description="refree id">
+                <expression value="[/Tournament/RefereeId]" />
+            </property>	
+        </message>
+    </map.sqlquery>
+</navascript>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navascript>
+<operations>
+<operation service="stadium/GetStadiumList" method="GET" />
+</operations>
+<message name="StadiumList">
+      <message name="Stadium" type="array" method="response">
+	
+          <message name="Stadium" type="definition">
+	 
+              <property name= "StadiumId" type="integer"  description="Unique Id for the stadium"/>
+              <property name= "StadiumName" type="string"  description="Name of the stadium"/>
+              <property name= "Place" type="string"  description="Place where the stadium located"/>
+              <property name= "Capacity" type="integer"  description="Capacity of the stadium"/>
+	 
+          </message>
+     </message>
+
+</message>
+</navascript>

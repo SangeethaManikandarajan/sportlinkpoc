@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navascript>
+ 
+	<message name="PlayerList">
+		<map.sqlquery datasource="'dvdrental'">
+			<sqlquery.query xml:space="preserve">
+                		SELECT *
+                		FROM player
+			</sqlquery.query>
+ 
+			<message name="Player" type="array">
+				<sqlquery.resultSet>
+					<property name="PlayerId" type="integer" direction="out" description="Player Id">
+						<expression value="$columnValue('id')" />
+					</property>
+					<property name="TeamId" type="integer" direction="in" description="Team Id">
+						<expression value="$columnValue('team_id')" />
+					</property>
+					<property name="PlayerName" type="string" direction="in" description="Player Name">
+						<expression value="$columnValue('player_name')" />
+					</property>
+					<property name="Age" type="integer" direction="in" description="Age">
+						<expression value="$columnValue('age')" />
+					</property>
+					<property name="Gender" type="string" direction="in" description="Gender">
+						<expression value="$columnValue('gender')" />
+					</property>
+					<property name="GameType" type="string" direction="in" description="Game Type">
+						<expression value="$columnValue('game_type')" />
+					</property>
+				</sqlquery.resultSet>
+			</message>
+		</map.sqlquery>
+	</message>
+ 
+</navascript>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navascript>
+
+    <map.sqlquery datasource="'dvdrental'">
+        <sqlquery.query xml:space="preserve">
+            SELECT *
+            FROM tournament
+            WHERE tournament_id = ?
+        </sqlquery.query>
+        <sqlquery.addParameter value="[/Tournament/TournamentId]" />
+
+        <message name="Tournament">
+            <property name="TournamentId" type="integer" direction="out" description="Internal product identifier">
+                <expression value="$columnValue('tournament_id')" />
+            </property>
+            <property name="Tournamentname" type="string" direction="in" description="Tournament name">
+                <expression value="$columnValue('tournament_name')" />
+            </property>
+                  <property name="TournamentStartTime" type="string" direction="in" description="Tournament start time">
+                <expression value="$columnValue('tournament_start_time')" />
+            </property>
+		<property name="TournamentEndTime" type="string" direction="in" description="Tournament end time">
+                <expression value="$columnValue('tournament_end_time')" />
+            </property>
+			<property name="TeamAId" type="integer" direction="in" description="Team A id">
+                <expression value="$columnValue('team_a_id')" />
+            </property>
+			<property name="TeamBId" type="integer" direction="in" description="Team B id">
+                <expression value="$columnValue('team_b_id')" />
+            </property>
+			<property name="StadiumId" type="integer" direction="in" description="Stadium id">
+                <expression value="$columnValue('stadium_id')" />
+            </property>
+			<property name="RefereeId" type="integer" direction="in" description="Referee id">
+                <expression value="$columnValue('referee_id')" />
+            </property>
+        </message>
+    </map.sqlquery>
+</navascript>

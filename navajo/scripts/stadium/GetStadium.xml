@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navascript>
+
+    <map.sqlquery datasource="'dvdrental'">
+        <sqlquery.query xml:space="preserve">
+            SELECT *
+            FROM stadium
+            WHERE stadium_id = ?
+        </sqlquery.query>
+        <sqlquery.addParameter value="ToInteger([/Stadium/StadiumId])" />
+
+            <message name="Stadium">
+          
+			  <property name= "StadiumId" type="integer" direction="out" description="Unique Id for the stadium">
+			  <expression value="$columnValue('stadium_id')" />
+			  </property>
+              <property name= "StadiumName" type="string" direction="in" description="Name of the stadium">
+	          <expression value="$columnValue('stadium_name')" />
+              </property>
+              <property name= "Place" type="string" direction="in" description="Place where the stadium located">
+	          <expression value="$columnValue('place')" />
+              </property>
+              <property name= "Capacity" type="integer" direction="in" description="Capacity of the stadium">
+	          <expression value="$columnValue('capacity')" />
+              </property>
+           </message>
+        </map.sqlquery>
+
+              <methods>
+	              <method name="stadium/GetStadium" />
+                  <method name="stadium/UpdateStadium" />
+                  <method name="stadium/DeleteStadium" />
+		          <method name="sstadium/InsertStadium" />
+                  </methods>
+
+	
+	
+	
+	
+</navascript>

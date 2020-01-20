@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navascript>
+
+	<message name="StadiumList">
+		<map.sqlquery datasource="'dvdrental'">
+			<sqlquery.query xml:space="preserve">
+                SELECT *
+                FROM stadium
+			</sqlquery.query>
+
+			<message name="Stadium" type="array">
+				<sqlquery.resultSet>
+					  <property name= "StadiumId" type="integer" direction="out" description="Unique Id for the stadium">
+			          <expression value="$columnValue('stadium_id')" />
+			          </property>
+                      <property name= "StadiumName" type="string" direction="in" description="Name of the stadium">
+	                  <expression value="$columnValue('stadium_name')" />
+                      </property>
+                      <property name= "Place" type="string" direction="in" description="Place where the stadium located">
+	                  <expression value="$columnValue('place')" />
+                      </property>
+                      <property name= "Capacity" type="integer" direction="in" description="Capacity of the stadium">
+	                  <expression value="$columnValue('capacity')" />
+                      </property>
+				   </sqlquery.resultSet>
+			</message>
+		</map.sqlquery>
+	</message>
+
+</navascript>

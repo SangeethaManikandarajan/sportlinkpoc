@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tsl id="team/TeamRegistration" notes="" repository="$Id$" xmlns="http://www.dexels.com/navascript"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xsi:schemaLocation="http://www.dexels.com/navascript http://www.dexels.com/schema/navascript.xsd">
+	
+	<validations>
+		<check code="101" description="Enter some data" xml:space="preserve">
+            Trim( [/Team/TeamName] ) != ''
+        </check>
+		
+		<check code="1" description="Enter the player count less than 25 and more than 15" xml:space="preserve">
+           
+		   (([/Team/TeamPlayerCount]) &gt; 15) AND (([/Team/TeamPlayerCount]) &lt; 25))
+        </check>
+		
+		<check code="101" xml:space="preserve">
+            Trim( [/Team/GameType] ) != ''
+        </check>
+	</validations>
+	
+	<param name="UpdateCount">
+        <expression value="0"/>
+    </param>
+
+    <map object="com.dexels.navajo.adapter.SQLMap">
+        <field name="datasource">
+            <expression value="'dvdrental'"/>
+        </field>
+        <field name="update">
+            <expression xml:space="preserve">
+                INSERT INTO team (  
+                       team_name
+                ,      team_player_count
+				,      game_type
+                 )
+                VALUES ( ?,?,? )
+            </expression>
+        </field>
+		
+        <field name="parameter">
+            <expression value="[/Team/TeamName]"/>
+        </field>
+        <field name="parameter">
+            <expression value="[/Team/TeamPlayerCount]"/>
+        </field>
+		<field name="parameter">
+            <expression value="[/Team/GameType]"/>
+        </field>
+				
+		<field name="doUpdate">
+            <expression value="true"/>
+        </field>
+        <param name="UpdateCount">
+            <expression value="[/@UpdateCount] + $updateCount"/>
+        </param>
+		
+    </map>
+	
+</tsl>

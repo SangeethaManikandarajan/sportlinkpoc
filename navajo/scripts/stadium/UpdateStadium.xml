@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navascript>
+  <validations>
+        <check code="105" description="Stadium Name should not be null" xml:space="preserve">
+        	 Trim([/Stadium/StadiumName]) != ''
+        </check>
+        <check code="106" description="Place name should not be null" xml:space="preserve">
+             Trim([/Stadium/Place]) != '' 
+        </check>
+     
+      </validations>
+    <map.sqlquery datasource="'dvdrental'">
+        <sqlquery.update xml:space="preserve">
+            UPDATE stadium
+            SET stadium_name = ?,
+                place= ?,
+                capacity= ?
+            WHERE Stadium_id = ?;
+        </sqlquery.update>
+        <sqlquery.addParameter value="[/Stadium/StadiumName]" />
+        <sqlquery.addParameter value="[/Stadium/Place]" />
+		 <sqlquery.addParameter value="[/Stadium/Capacity]" />
+        <sqlquery.addParameter value="ToInteger([/Stadium/StadiumId])" />
+        <sqlquery.doUpdate/>
+
+        <message name="Stadium">
+             <property name= "StadiumId" type="integer" direction="out" description="Unique Id for the stadium">
+			  <expression value="[Stadium/StadiumId]" />
+			  </property>
+              <property name= "StadiumName" type="string" direction="in" description="Name of the stadium">
+	          <expression value="[Stadium/StadiumName]"/>
+              </property>
+              <property name= "Place" type="string" direction="in" description="Place where the stadium located">
+	          <expression value="[Stadium/Place]" />
+              </property>
+              <property name= "Capacity" type="integer" direction="in" description="Capacity of the stadium">
+	          <expression value="[Stadium/Capacity]" />
+              </property>
+        </message>
+    </map.sqlquery>
+
+  
+
+</navascript>

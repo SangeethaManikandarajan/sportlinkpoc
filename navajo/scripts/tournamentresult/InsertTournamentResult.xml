@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tsl id="tournament/InsertTournament" xmlns="http://www.dexels.com/navascript" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.dexels.com/navascript http://www.dexels.com/schema/navascript.xsd">
+<validations>
+<check code="102" description="Enter valid Score" xml:space="preserve">
+            [/TournamentResult/TeamAScore] >=0
+ </check>
+<check code="102" description="Enter valid Score" xml:space="preserve">
+            [/TournamentResult/TeamBScore] >=0
+ </check>        
+</validations>   
+ <param name="UpdateCount">
+        <expression value="0"/>
+    </param>
+    <map object="com.dexels.navajo.adapter.SQLMap">
+        <field name="datasource">
+            <expression value="'dvdrental'"/>
+        </field>
+        <field name="update">
+            <expression xml:space="preserve">
+                INSERT INTO tournament_result ( 
+                       tournament_id ,	
+team_a_score,					   
+                       team_b_score
+                ,      match_result)
+                VALUES ( ?,?, ?, ?)
+            </expression>
+        </field>
+        <field name="parameter">
+            <expression value="[/TournamentResult/TournamentId]"/>
+        </field>
+		<field name="parameter">
+            <expression value="[/TournamentResult/TeamAScore]"/>
+        </field>
+        <field name="parameter">
+            <expression value="[/TournamentResult/TeamBScore]"/>
+        </field>
+        <field name="parameter">
+            <expression value="[/TournamentResult/MatchResult]"/>
+        </field>
+        <field name="doUpdate">
+            <expression value="true"/>
+        </field>
+                   </map>
+</tsl>

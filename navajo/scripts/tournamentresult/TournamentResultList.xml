@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navascript>
+
+	<message name="TournamentList">
+		<map.sqlquery datasource="'dvdrental'">
+			<sqlquery.query xml:space="preserve">
+                SELECT *
+                FROM tournament_result
+			</sqlquery.query>
+			<message name="Tournament" type="array">
+				<sqlquery.resultSet>
+					<property name="TournamentId" type="integer" direction="out" description="Internal product identifier">
+                <expression value="$columnValue('tournament_id')" />
+            </property>
+            <property name="TeamAScore" type="integer" direction="in" description="Productname">
+                <expression value="$columnValue('team_a_score')" />
+            </property>
+            <property name="TeamBScore" type="integer" direction="in" description="Productbrand">
+                <expression value="$columnValue('team_b_score')" />
+            </property>
+		<property name="MatchResult" type="text" direction="in" description="Productcategory">
+                <expression value="$columnValue('match_result')" />
+            </property>
+				</sqlquery.resultSet>
+			</message>
+		</map.sqlquery>
+	</message>
+
+</navascript>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navascript>
+
+	<operations>
+		<operation service="player/PlayerRegistration" method="POST" />
+		<operation service="player/PlayerDisplay" method="GET" />
+		<operation service="player/PlayerUpdate" method="PUT" />
+		<operation service="player/PlayerDelete" method="DELETE" />
+	</operations>
+
+	<message name="Player">
+		<property name="PlayerId" type="integer" direction="in" key="true,auto" description="Player Id Auto Generated" />
+		<property name="TeamId" type="integer" direction="in" description="Team Id is getting from Team" />
+		<property name="PlayerName" type="string" direction="in" description="Player Name" />
+		<property name="Age" type="integer" direction="in" description="Age" />
+		<property name="Gender" type="selection"  cardinality="1" direction="in" description="Gender" >
+			<option name="Male" value="Male" selected="1" />
+			<option name="Female" value="Female" selected="0" />
+		</property>
+		<property name="GameType" type="selection"  cardinality="1" direction="in" description="Game Type" >
+			<option name="FootBall" value="Foot Ball" selected="1"/>
+			<option name="Hockey" value="Hockey" selected="0"/>
+		</property>
+	</message>
+
+</navascript>

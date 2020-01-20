@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tsl id="player/PlayerRegistration" notes="" repository="$Id$" xmlns="http://www.dexels.com/navascript"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xsi:schemaLocation="http://www.dexels.com/navascript http://www.dexels.com/schema/navascript.xsd">
+	<validations>
+		<check code="101" description="Enter team id gretaer than 0" xml:space="preserve">
+            ( [/Player/TeamId] ) &gt; 0
+        </check>
+
+		<check code="1" description="Enter some data" xml:space="preserve">           
+			Trim( [/Player/PlayerName] ) != ''
+        </check>
+
+		<check code="101"  description="Enter team id gretaer than 0" xml:space="preserve">
+            (([/Player/Age]) &gt; 15) AND (([/Player/Age]) &lt; 25))
+        </check>
+		
+		<check code="1" description="Enter some data" xml:space="preserve">
+            Trim( [/Player/Gender] ) != ''
+        </check>
+		
+		<check code="1" description="Enter some data" xml:space="preserve">
+            Trim( [/Player/GameType] ) != ''
+        </check>
+		
+	</validations> 
+
+	<param name="UpdateCount">
+        <expression value="0"/>
+    </param>
+
+    <map object="com.dexels.navajo.adapter.SQLMap">
+        <field name="datasource">
+            <expression value="'dvdrental'"/>
+        </field>
+
+        <field name="update">
+            <expression xml:space="preserve">
+                INSERT INTO player (  
+                       team_id
+                ,      player_name
+				,      age
+				,      gender
+				,      game_type
+                 )
+                VALUES ( ?,?,?,?,? )
+            </expression>
+        </field>
+		
+        <field name="parameter">
+            <expression value="[/Player/TeamId]"/>
+        </field>
+
+        <field name="parameter">
+            <expression value="[/Player/PlayerName]"/>
+        </field>
+		<field name="parameter">
+            <expression value="[/Player/Age]"/>
+        </field>
+		<field name="parameter">
+            <expression value="[/Player/Gender]"/>
+        </field>
+		<field name="parameter">
+            <expression value="[/Player/GameType]"/>
+        </field>
+		
+		<field name="doUpdate">
+            <expression value="true"/>
+        </field>
+        <param name="UpdateCount">
+            <expression value="[/@UpdateCount] + $updateCount"/>
+        </param>
+		
+    </map>
+	
+</tsl>

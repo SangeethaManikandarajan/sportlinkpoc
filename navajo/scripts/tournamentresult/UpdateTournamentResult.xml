@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navascript>
+
+    <map.sqlquery datasource="'dvdrental'">
+        <sqlquery.update xml:space="preserve">
+            UPDATE tournament_result
+            SET tournament_id = ?,
+                team_a_score	 = ?,
+				team_b_score	 = ?,
+				match_result 	 = ?
+            WHERE result_id = ?;
+        </sqlquery.update>
+        <sqlquery.addParameter value="[/TournamentResult/TournamentId]" />
+        <sqlquery.addParameter value="[/TournamentResult/TeamAScore]" />
+		<sqlquery.addParameter value="[/TournamentResult/TeamBScore]" />
+        <sqlquery.addParameter value="[/TournamentResult/MatchResult]" />
+<sqlquery.addParameter value="[/TournamentResult/ResultId]" />
+        <sqlquery.doUpdate/>
+
+        <message name="TournamentResult">
+ <property name="ResultId" type="integer" direction="out" description="Internal result identifier">
+                <expression value="[/TournamentResult/ResultId]" />
+            </property>
+            <property name="TournamentId" type="integer" direction="out" description="Internal id identifier">
+                <expression value="[/TournamentResult/TournamentId]" />
+            </property>
+            <property name="TeamAScore" type="integer" direction="in" description="A score">
+                <expression value="[/TournamentResult/TeamAScore]" />
+            </property>
+            <property name="TeamBScore" type="integer" direction="in" description="B score">
+                <expression value="[/TournamentResult/TeamBScore]" />
+            </property>
+		<property name="MatchResult" type="text" direction="in" description="Result ">
+                <expression value="[/TournamentResult/MatchResult]" />
+            </property>
+			
+        </message>
+    </map.sqlquery>
+ </navascript>

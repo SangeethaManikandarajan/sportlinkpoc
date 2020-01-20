@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navascript>
+
+    <operations>
+        <operation service="team/TeamList" method="GET" />
+   </operations>
+
+    <message name="TeamList">
+        <message name="Team" type="array" method="response">
+            <message name="Team" type="definition">
+                <property name="TeamId" type="integer" description="Team Id" />
+                <property name="TeamName" type="string" description="Team name" />
+                <property name="TeamPlayerCount" type="integer" description="Team Player Count" />
+				<property name="GameType" type="string" description="Game Type" />
+            </message>
+        </message>
+    </message>
+
+</navascript>

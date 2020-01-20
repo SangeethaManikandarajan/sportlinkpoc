@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navascript>
+
+<validations>
+		<check code="101" description="Enter some data" xml:space="preserve">
+            Trim( [/Team/TeamName] ) != ''
+        </check>
+		
+		<check code="1" description="Enter the player count less than 25 and more than 15" xml:space="preserve">
+           
+		   (([/Team/TeamPlayerCount]) &gt; 15) AND (([/Team/TeamPlayerCount]) &lt; 25))
+        </check>
+		
+		<check code="101" xml:space="preserve">
+            Trim( [/Team/GameType] ) != ''
+        </check>
+	</validations>
+	
+    <map.sqlquery datasource="'dvdrental'">
+        <sqlquery.update xml:space="preserve">
+            UPDATE team
+            SET team_name = ?,
+                team_player_count= ?,
+                game_type = ?
+            WHERE id = ?;
+        </sqlquery.update>
+        <sqlquery.addParameter value="[/Team/TeamName]" />
+        <sqlquery.addParameter value="[/Team/TeamPlayerCount]" />
+		<sqlquery.addParameter value="[/Team/GameType]" />
+		
+        <sqlquery.addParameter value="ToInteger([/Team/TeamId])" />
+        <sqlquery.doUpdate/>
+
+        <message name="Team">
+            <property name= "TeamId" type="integer" direction="out" description="Team Id is Auto Generated">
+				<expression value="[Team/TeamId]" />
+			</property>
+            <property name= "TeamName" type="string" direction="in" description="Name of the Team Name">
+				<expression value="[Team/TeamName]"/>
+            </property>
+            <property name= "TeamPlayerCount" type="integer" direction="in" description="Team Player Count">
+				<expression value="[Team/TeamPlayerCount]" />
+            </property>
+            <property name= "GameType" type="integer" direction="in" description="Game Type">
+				<expression value="[Team/GameType]" />
+            </property>
+		
+        </message>
+    </map.sqlquery>
+
+ 
+
+</navascript>

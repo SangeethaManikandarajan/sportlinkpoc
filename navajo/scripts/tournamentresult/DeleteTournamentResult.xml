@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navascript>
+
+    <param name="ResultId" type="integer">
+        <expression value="[/TournamentResult/ResultId]" />
+    </param>
+
+    <map.sqlquery datasource="'dvdrental'">
+        <sqlquery.update xml:space="preserve">
+            DELETE FROM tournament_result
+            WHERE result_id = ?;
+        </sqlquery.update>
+        <sqlquery.addParameter value="[@ResultId]" />
+        <sqlquery.doUpdate/>
+
+        <message name="Deleted">
+            <property name="ResultId" type="integer" direction="out" description="Internal id identifier">
+                <expression value="[@ResultId]" />
+            </property>
+            <property name="Count" type="integer" direction="out" description="Number of rows deleted">
+                <expression value="$updateCount" />
+            </property>
+        </message>
+    </map.sqlquery>
+
+</navascript>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navascript>
+
+	<operations>
+                <operation service="tournament/InsertTournament" method="POST" />
+ <operation service="tournament/Tournament" method="GET" />
+ <operation service="tournament/UpdateTournament" method="PUT" />
+
+	</operations>
+
+	<message name="Tournament">
+		<property name="TournamentId" type="integer" key="true,auto" description="Match Id" />
+		<property name="Tournamentname" type="string" description="Match name" />
+		<property name="TournamentStartTime" type="string" description="Match start time" />
+		<property name="TournamentEndTime" type="string" description="Match End Time" />
+		<property name="TeamAId" type="integer" description="TeamA player" />
+		<property name="TeamBId" type="integer" description="Team B player" />
+		<property name="StadiumId" type="integer" description="Stadium reference id" />
+		<property name="RefereeId" type="integer" description="Match Referee reference id" />
+	</message>
+
+</navascript>

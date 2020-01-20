@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navascript>
+
+	<message name="TeamList">
+		<map.sqlquery datasource="'dvdrental'">
+			<sqlquery.query xml:space="preserve">
+                SELECT *
+                FROM team
+			</sqlquery.query>
+
+			<message name="Team" type="array">
+				<sqlquery.resultSet>
+					<property name="TeamId" type="integer" direction="out" description="Team id">
+						<expression value="$columnValue('id')" />
+					</property>
+					<property name="TeamName" type="string" direction="in" description="Team Name">
+						<expression value="$columnValue('team_name')" />
+					</property>
+					<property name="TeamPlayerCount" type="integer" direction="in" description="Team Player Count">
+						<expression value="$columnValue('team_player_count')" />
+					</property>
+					<property name="GameType" type="string" direction="in" description="Game Type">
+						<expression value="$columnValue('game_type')" />
+					</property>
+				</sqlquery.resultSet>
+			</message>
+		</map.sqlquery>
+	</message>
+
+</navascript>

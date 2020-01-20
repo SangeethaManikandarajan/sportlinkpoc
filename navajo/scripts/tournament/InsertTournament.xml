@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tsl id="tournament/InsertTournament" xmlns="http://www.dexels.com/navascript" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.dexels.com/navascript http://www.dexels.com/schema/navascript.xsd">
+<validations>
+<check code="101" description="Enter valid Input" xml:space="preserve">
+            Trim( [/Tournament/Tournamentname] ) != ''
+ </check> 
+<check code="104" description="Start date should not be null" xml:space="preserve">
+            Trim( [/Tournament/TournamentStartTime] ) != ''
+ </check>
+<check code="105" description="End date should not be null" xml:space="preserve">
+            Trim( [/Tournament/TournamentEndTime] ) != ''
+ </check>
+
+<check code="208" description="Start date should be future date" xml:space="preserve">
+            IsFutureDate( [/Tournament/TournamentStartTime] ) == true
+ </check> 
+<check code="209" description="End time should be after start time" xml:space="preserve">
+            IsDateBetween( [/Tournament/TournamentEndTime],[/Tournament/TournamentStartTime],[/Tournament/TournamentEndTime] ) == true
+</check> 
+  
+</validations>    
+<param name="UpdateCount">
+        <expression value="0"/>
+    </param>
+    <map object="com.dexels.navajo.adapter.SQLMap">
+        <field name="datasource">
+            <expression value="'dvdrental'"/>
+        </field>
+        <field name="update">
+            <expression xml:space="preserve">
+                INSERT INTO tournament ( 
+                       tournament_name
+                    ,tournament_start_time
+                  ,   tournament_end_time
+                ,      team_a_id
+                ,      team_b_id 
+                ,      stadium_id 
+                ,      referee_id  )
+                VALUES ( ?, to_timestamp(?,'YYYY-MM-DD HH24:MI:SS'),to_timestamp(?,'YYYY-MM-DD HH24:MI:SS'), ?, ?, ?,? )
+            </expression>
+        </field>
+        <field name="parameter">
+            <expression value="[/Tournament/Tournamentname]"/>
+        </field>
+	        <field name="parameter">
+            <expression value="[/Tournament/TournamentStartTime]"/>
+        </field>
+        <field name="parameter">
+            <expression value="[/Tournament/TournamentEndTime]"/>
+        </field>
+        <field name="parameter">
+            <expression value="[/Tournament/TeamAId]"/>
+        </field>
+        <field name="parameter">
+            <expression value="[/Tournament/TeamBId]"/>
+        </field>
+        <field name="parameter">
+            <expression value="[/Tournament/StadiumId]"/>
+        </field>
+		<field name="parameter">
+            <expression value="[/Tournament/RefereeId]"/>
+        </field>
+        <field name="doUpdate">
+            <expression value="true"/>
+        </field>
+                   </map>
+</tsl>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navascript>
+
+    <map.sqlquery datasource="'dvdrental'">
+        <sqlquery.query xml:space="preserve">
+            SELECT *
+            FROM player
+            WHERE id = ?
+        </sqlquery.query>
+            <sqlquery.addParameter value="ToInteger([/Player/PlayerId])" />
+
+
+        <message name="Player">
+            <property name="PlayerId" type="integer" direction="out" description="Player Id">
+                <expression value="$columnValue('id')" />
+            </property>
+            <property name="TeamId" type="integer" direction="in" description="Team Id">
+                <expression value="$columnValue('team_id')" />
+            </property>
+            <property name="PlayerName" type="string" direction="in" description="Player Name">
+                <expression value="$columnValue('player_name')" />
+            </property>
+			<property name="Age" type="integer" direction="in" description="Age">
+                <expression value="$columnValue('age')" />
+            </property>
+			<property name="Gender" type="string" direction="in" description="Gender">
+                <expression value="$columnValue('gender')" />
+            </property>
+			<property name="GameType" type="string" direction="in" description="Game Type">
+                <expression value="$columnValue('game_type')" />
+            </property>
+        </message>
+    </map.sqlquery>
+
+</navascript>

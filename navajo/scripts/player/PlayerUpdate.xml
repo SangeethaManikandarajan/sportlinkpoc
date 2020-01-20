@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navascript>
+
+<validations>
+
+<check code="101" description="Enter team id gretaer than 0" xml:space="preserve">
+            ( [/Player/TeamId] ) &gt; 0
+        </check>
+
+<check code="1" description="Enter some data" xml:space="preserve">          
+Trim( [/Player/PlayerName] ) != ''
+        </check>
+
+<check code="101"  description="Enter the age between 15 and 45" xml:space="preserve">
+            (([/Player/Age]) &gt; 15) AND (([/Player/Age]) &lt; 45))
+        </check>
+
+<check code="1" description="Enter some data" xml:space="preserve">
+            Trim( [/Player/Gender] ) != ''
+        </check>
+
+<check code="1" description="Enter some data" xml:space="preserve">
+            Trim( [/Player/GameType] ) != ''
+        </check>
+
+</validations>
+
+    <map.sqlquery datasource="'dvdrental'">
+        <sqlquery.update xml:space="preserve">
+            UPDATE player
+            SET team_id = ?,
+                player_name= ?,
+                age = ?,
+gender = ?,
+game_type = ?
+            WHERE id = ?;
+        </sqlquery.update>
+        <sqlquery.addParameter value="[/Player/TeamId]" />
+        <sqlquery.addParameter value="[/Player/PlayerName]" />
+<sqlquery.addParameter value="[/Player/Age]" />
+<sqlquery.addParameter value="[/Player/Gender]" />
+<sqlquery.addParameter value="[/Player/GameType]" />
+        <sqlquery.addParameter value="ToInteger([/Player/PlayerId])" />
+        <sqlquery.doUpdate/>
+
+        <message name="Player">
+            <property name= "PlayerId" type="integer" direction="out" description="Player Id is Auto Generated">
+<expression value="[/Player/PlayerId]" />
+</property>
+<property name= "TeamId" type="integer" direction="out" description="Team Id">
+<expression value="[/Player/TeamId]" />
+</property>
+            <property name= "PlayerName" type="string" direction="in" description="Player Name">
+<expression value="[/Player/PlayerName]"/>
+            </property>
+            <property name= "Age" type="integer" direction="in" description="Age">
+<expression value="[/Player/Age]" />
+            </property>
+            <property name= "Gender" type="string" direction="in" description="Gender">
+<expression value="[/Player/Gender]" />
+            </property>
+<property name= "GameType" type="string" direction="in" description="Game Type">
+<expression value="[/Player/GameType]" />
+            </property>
+        </message>
+    </map.sqlquery>
+
+</navascript>

@@ -1,0 +1,13 @@
+<tml>
+  <message name="entities" type="array">
+
+    <message name="entities" type="array_element">
+      <property name="entity" value="player/Player" />
+    </message>
+  
+    <message name="entities" type="array_element">
+      <property name="entity" value="player/PlayerList" />
+    </message>
+	
+  </message>
+</tml>

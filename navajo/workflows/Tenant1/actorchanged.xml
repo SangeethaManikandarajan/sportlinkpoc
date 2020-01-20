@@ -1,0 +1,11 @@
+<!-- Stripped version from the KNVB's insertcorefunction trigger without inserting -->
+<!-- protected e-mail accounts, subscriptions and notification                     -->
+<!-- Automatically insert extra data like SPORTLINKCLUBUSER role and MDesk-account -->
+<workflow transient="true">
+    <state id="init">
+       <transition trigger="navajo:movie/UpdateActor" navajo="request" nextstate="exit"/>
+    </state>
+    <state id="exit">
+        <transition trigger="immediate" nextstate="null"/>
+    </state>
+</workflow>

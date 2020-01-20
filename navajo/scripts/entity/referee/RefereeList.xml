@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navascript>
+<operations>
+<operation service="referee/GetRefereeList" method="GET" />
+</operations>
+<message name="RefereeList">
+      <message name="Referee" type="array" method="response">
+	
+          <message name= "Referee" type="definition">
+               <property name= "RefereeId" type="integer" key="true,id=auto" description="Unique Id for the referee"/>
+               <property name= "RefereeName" type="string"  description="Name of the referee"/>
+               <property name= "Gender" type="string" type="selection"  cardinality="1" direction="in" description="Gender of the referee">
+	           <option name="Male" value="1" selected="1"/>
+               <option name="Female" value="2" selected="0"/>
+               </property>
+	           <property name= "Age" type="integer"  description="Age of the referee"/>
+	           <property name= "Nationality" type="string"  description="Referee's Nationality"/>
+	           <property name= "Game Type" type="string"  description="Type of the Game"/>
+	           <property name= "Level Of Expertise" type="selection"  cardinality="1" direction="in" description="Referee's level of expertise">
+               <option name="Level 1" value="1" selected="1"/>
+               <option name="Level 2" value="2" selected="0"/>
+               <option name="Level 3" value="3" selected="0"/>
+               </property>
+               </message>
+        </message>
+
+</message>
+</navascript>

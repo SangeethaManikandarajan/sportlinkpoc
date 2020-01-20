@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tsl>
+    <map object="com.dexels.navajo.adapter.SQLMap">
+        <field name="datasource">
+            <expression value="'dvdrental'"/>
+        </field>
+        <field name="query">
+            <expression xml:space="preserve">
+             DELETE FROM referee
+            WHERE referee_id = ?
+			</expression>
+        </field>
+        <field name="parameter">
+            <expression value="[/Referee/RefereeId]"/>
+        </field>
+               <message name="Deleted">
+            <property name="RefereeId" type="integer" direction="out" description="Unique Id for the referee">
+                <expression value="[/Referee/RefereeId]" />
+            </property>
+        </message>
+     </map>
+
+</tsl>
