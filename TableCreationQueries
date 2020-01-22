@@ -1,0 +1,67 @@
+CREATE TABLE public.team (
+	id serial NOT NULL,
+	team_name varchar(100) NOT NULL,
+	team_player_count int,
+	game_type varchar(100) NOT NULL,
+	CONSTRAINT pk_team PRIMARY KEY (id)
+);
+
+CREATE TABLE public.player (
+	id serial NOT NULL,
+	team_id int NOT NULL,
+	player_name varchar(100) NOT NULL,
+	age int,
+	gender varchar(20) NOT NULL,
+	game_type varchar(100) NOT NULL,
+	CONSTRAINT pk_player PRIMARY KEY (id),
+	CONSTRAINT fk_player_team FOREIGN KEY (team_id) REFERENCES team (id)
+);
+
+CREATE TABLE public.stadium (
+	stadium_id serial NOT NULL,
+	stadium_name varchar(100) NOT NULL,
+	place text NOT NULL,
+	capacity int4 NULL,
+	CONSTRAINT stadium_pkey PRIMARY KEY (stadium_id)
+);
+
+
+CREATE TABLE public.referee (
+	referee_id serial NOT NULL,
+	referee_name varchar(100) NOT NULL,
+	gender varchar(20) NULL,
+	age int2 NULL,
+	nationality varchar(50) NULL,
+	game_type varchar(100) NOT NULL,
+	level_of_expertise varchar(10) NOT NULL,
+	CONSTRAINT pk_referee PRIMARY KEY (referee_id)
+);
+
+
+CREATE TABLE public.tournament (
+tournament_id serial NOT NULL,
+tournament_name varchar(100) NULL,
+tournament_start_time timestamptz NULL,
+tournament_end_time timestamptz NULL,
+team_a_id int4 NOT NULL,
+team_b_id int4 NOT NULL,
+stadium_id int4 NOT NULL,
+referee_id int4 NOT NULL,
+CONSTRAINT pk_tournament PRIMARY KEY (tournament_id),
+CONSTRAINT fk_tournament_referee FOREIGN KEY (referee_id) REFERENCES public.referee(referee_id),
+CONSTRAINT fk_tournament_stadium FOREIGN KEY (stadium_id) REFERENCES public.stadium(stadium_id),
+CONSTRAINT fk_tournament_team FOREIGN KEY (team_a_id) REFERENCES public.team(id),
+CONSTRAINT fk_tournament_team1 FOREIGN KEY (team_b_id) REFERENCES public.team(id)
+);
+
+
+
+CREATE TABLE public.tournament_result (
+result_id serial NOT NULL,
+tournament_id int4 NOT NULL,
+team_a_score int4 NOT NULL,
+team_b_score int4 NOT NULL,
+match_result text NOT NULL,
+CONSTRAINT pk_tournament_result PRIMARY KEY (result_id),
+CONSTRAINT fk_tournament_result FOREIGN KEY (tournament_id) REFERENCES public.tournament(tournament_id)
+);
